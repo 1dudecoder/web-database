@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .box{
+        display: flex;
+        flex-direction: column;
+    }
+    input,button{
+        height: 50px;
+        width: 300px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .show{
+        height: 500px;
+        width: 500px;
+        background-color: rebeccapurple;
+        margin-left: 400px;
+        color: white;
+        overflow: auto;
+    }
+
+</style>
+<body>
+    
+    <h1>Store your data on local storage</h1>
+    <div class="box">
+        <input placeholder="enter your text">
+        <button place="clik to store">click to store</button>
+    </div>
+
+    <div class="show">
+        <center><h1>Your data is here</h1></center>
+        <p></p>
+    </div>
+
+</body>
+<script>
+    let inp = document.querySelector("input");
+    let btn = document.querySelector("button");
+    let show = document.querySelector(".show");
+
+    if(localStorage.length == 0){
+        var put = 0;
+    }else{
+        put = localStorage.length;
+    }
+    
+    if(true){
+        for(let i = 0 ; i < localStorage.length;i++){
+            let p = document.createElement("p");
+            p.innerText = localStorage.getItem(i);
+            show.append(p);
+        }
+    }
+
+    btn.addEventListener("click",function(e){        
+        let mydata = inp.value;
+        console.log(mydata);
+        let p = document.createElement("p");
+        p.innerText = mydata;
+        show.append(p);
+        abc(mydata);
+    })
+
+    function abc(data){
+        localStorage.setItem(put,data);
+        put++;
+    }
+
+
+</script>
+</html>
